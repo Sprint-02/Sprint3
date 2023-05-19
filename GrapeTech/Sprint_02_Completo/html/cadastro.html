@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrapeTech | Cadastro</title>
+    <link rel="stylesheet" href="../css/navBar.css">
+    <link rel="stylesheet" href="../css/cadastro_login.css">
+
+    <!-- COLOCANDO ICON -->
+    <link rel="icon" href="../img/logo.png">
+</head>
+
+<body>
+
+    <!-- INICIO DO MENU DO SITE -->
+
+    <div class="header">
+        <div class="container">
+            <img src="../img/lkogo grapetech.png" alt="">
+            <ul class="navbar">
+                <li>
+                <img class="header icone-home" src="../img/casa.png" alt="">
+                <a href="../index.html">Inicial</a>
+                </li>
+                <li>
+                    <a href="../html/calculadora.html">Simulador</a>
+                </li>
+                <li>
+                    <a href="../html/login.html">Login</a>
+                </li>
+                <li class="paginaSelecionada">
+                    <a href="../html/cadastro.html">Cadastro</a>
+                </li>
+                <li>
+                    <a href="../html/contato.html">Fale conosco</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- FIM DO MENU DO SITE -->
+
+    <p>
+        Seja Cliente da GrapeTech e tenha controle sobre suas Videiras!
+    </p>
+
+    <!-- INICIO DO FORMULÁRIO DE CADASTRO -->
+    <div class="container">
+        <div class="card_cadastro">
+            <h2>Usuario</h2>
+            <div class="formulario">
+
+                <span>Nome:</span>
+                <input type="text" placeholder="Nome" id="input_nome">
+                <span> Credencial Empresa: </span>
+                <input type="number" placeholder="credencial da empresa" id="input_credEmp"
+                <span> CPF: </span>
+                <input type="number" max="11" placeholder="CPF" id="input_cpf">
+                <span> Email: </span>
+                <input type="text" placeholder="Email" id="input_email">
+                <span> Senha: </span>
+                <input type="text" placeholder="Senha" id="input_senha">
+                <span> Confirmar senha: </span>
+                <input type="text" placeholder="Repita sua senha" id="repete_senha">
+
+                <div class="btn_cadastrar">
+                    <button class="botao" onclick="btnCadUsu()">Cadastrar</button>
+                </div>
+                <div class="baixoButon">
+                    Já tem uma conta? <a href="/SPRINT02/html/login.html">Entre aqui</a>
+                </div>
+            </div>
+        </div>
+        <div class="card_cadastro">
+            <h2>Empresa</h2>
+            <div class="formulario">
+                <span>Nome da Empresa:</span>
+                <input type="text" placeholder="Nome" id="input_nomeE" value="Uvas Caridosas">
+                <span>CNPJ:</span>
+                <input type="number" max="18" placeholder="CNPJ" id="input_cnpj" value="99999999999">
+                <span> E-mail empresa: </span>
+                <input type="text" placeholder="E-mail" id="input_emailE" value="uvas@hotmail.com">
+                <span> Telefone empresa:</span>
+                <input type="number" max="10" placeholder="Telefone" id="input_telEmpre" value="11975405597">
+                <span> Senha: </span>
+                <input type="text" placeholder="Senha" id="input_senhaE">
+                <span> Confirmar senha: </span>
+                <input type="text" placeholder="Repita sua senha" id="repete_senhaE">
+
+                <div class="btn_cadastrar">
+                    <button class="botao" onclick="btnCadEmpre()">Cadastrar</button>
+                </div>
+                <div class="baixoButon">
+                    Já tem uma conta? <a href="/SPRINT02/html/login.html">Entre aqui</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- FIM DO FORMULÁRIO DE CADASTRO -->
+
+    <!-- /* RODAPÉ (INICIO) */ -->
+    <div class="footer">
+            <h4>
+                Copyright &copy; GrapeTech Todos os direitos reservados
+                <span class="version">2023</span>
+            </h4>
+            <span class="version">v1.0.0</span>
+        </div>
+    <!-- /* RODAPÉ (FIM) */ -->
+
+</body>
+
+</html>
+
+<script>
+
+    function btnCadUsu() {
+    
+
+        // CADASTRAR USUARIO
+        var CEmpresa = input_credEmp.value;
+        var nomeU = input_nome.value;
+        var senhaVar = input_senha.value;
+        var confirmacaoSenhaVar = repete_senha.value;
+        var cpfVar = input_cpf.value;
+        var emailU = input_email.value;
+
+        if (nomeU == "" || emailU == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                CEmpresaServer: CEmpresa,
+                nomeServer: nomeU,
+                cpfServer: cpfVar,
+                emailServer: emailU,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+
+
+
+
+        function btnCadEmpre() {
+        // CADASTRO EMPRESA
+        var nomeVar = input_nomeE.value;
+        var CNPJvar = input_cnpj.value;
+        var emailVar = input_emailE.value;
+        var senhaVar = input_senhaE.value;
+        var confirmacaoSenhaVar = repete_senhaE.value;
+        var telefoneVar = input_telEmpre;
+
+        if (nomeVar == "") {
+          alert("Nome não inserido")
+        } else if(CNPJvar == "" ){
+            alert("CNPJ não inserido")
+        }else if( emailVar == "" ){
+            alert("Email invalido")
+        }else if ( senhaVar == "" ){
+            alert("Senha não inserida")
+        }else if(confirmacaoSenhaVar == "" || confirmacaoSenhaVar != senhaVar){
+            alert("Campo invalido, confirmação de senha mal inserida")
+        }else if(telefoneVar == ""){
+            alert("Telefone não inserido")
+        } else if (nomeVar == "Uvas Caridosas" || CNPJvar == "99999999999" ||emailVar == "uvas@hotmail.com" || senhaVar == "123" || confirmacaoSenhaVar == "123" || telefoneVar == "11975405597"){
+            alert("Cadastro Realizado! Obrigado pela parceria!")
+        }    
+    }
+</script>

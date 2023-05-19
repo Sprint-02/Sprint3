@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>GrapeTech | Sobre Nós</title>
+    <!-- CHAMANDO EXTERNAMENTE NA PASTA (CSS) -->
+    <link rel="stylesheet" href="../css/navBar.css" />
+    <link rel="stylesheet" href="../css/contato.css" />
+    <!-- COLOCANDO ICON -->
+    <link rel="icon" href="../img/logo.png">
+    <!-- COLOCANDO ICON -->
+    <link rel="icon" href="./img/logo.png">
+
+</head>
+<body>
+
+ <!-- BARRA DE NAVEGAÇÃO INICIO -->
+  <div class="header">  <!-- CABEÇALHO -->
+    <div class="container">
+      <img src="../img/lkogo grapetech.png" alt=""> <!-- LOGO -->
+        <ul class="navbar">
+          <li>
+              <img class="header icone-home" src="../img/casa.png" alt=""> <!-- ICONE INICIO (CASA) -->
+              <a href="../index.html">Inicial</a>
+          </li>
+          <li>
+              <a href="../html/calculadora.html">Simulador</a>
+          </li>
+          <li>
+              <a href="../html/login.html">Login</a>
+          </li>
+          <li>
+              <a href="../html/cadastro.html">Cadastro</a>
+          </li>
+              <li class="paginaSelecionada">
+              <a href="#">Fale conosco</a>
+          </li>
+        </ul>
+    </div>
+  </div>
+  <!-- BARRA DE NAVEGAÇÃO FIM -->
+
+  <!-- FORMULARIO INICIO -->
+  <div class="container">
+    <div class="card_formulario"> <!-- FUNDO E OPÇÕES DO CARD -->
+        <h2>Entre em Contato!</h2>
+      <div class="formulario"> <!-- TODO CONTEUDO CARD -->
+          <p>
+            Para enviar sua solicitação, dúvida, sugestão ou elogios, por favor
+            preencha os campos abaixo:
+          </p>
+          <div class="campo">
+              <input id="email_input" type="email" placeholder="E-mail:" />
+          </div>
+
+          <span>Assunto:</span>
+            <select name="Assunto" id="slcAssunto"> <!-- SELECT DE OPÇÕES -->
+                  <option value="" disabled selected>Selecione o Assunto</option>
+                  <option value="Arduino">Arduino</option>
+                  <option value="Sensor">Sensor</option>
+                  <option value="Dados">Dados</option>
+                  <option value="Dashboard">Dashboard</option>
+            </select>
+
+          <div class="campo">
+            <input id="senha_input" placeholder="Descrição:"/>
+          </div>
+          <button class="button_enviar" onclick="enviar()">Enviar</button>
+      </div>
+    </div>
+  </div>
+  <!-- FORMULARIO FIM -->
+
+  <!-- INFORMAÇÕES ADD INICIO -->
+  <div class="container_cards">
+    <div class="card_add"> <!-- FUNDO E OPÇÕES CARD -->
+      <div class="card_text"> <!-- TODO CONTEUDO CARD -->
+
+        <div class="card_mini">
+            <h3>Horario:</h3>
+            <p>Seg - Qui</p>
+            <span>08:00 - 18:00</span>
+            <p>Sexta</p> 
+            <span>08:00 - 16:00</span>
+            <p>Final de semana</p>
+            <span>10:00 - 16:00</span> 
+        </div>
+
+            <div class="traco">|</div> <!-- TRAÇO DE SEPARAÇÃO -->
+
+        <div class="card_mini">
+            <h3>Contato:</h3>
+            <p>Telefone</p>
+            <span>(55) +11 99334-7562</span>
+            <p>E-mail</p>
+            <span>grapetech@sptech.sschool</span> 
+            <p>Social</p>
+        <div>
+            <img class="insta" src="../img/instagram.png" alt=""> <!-- IMAGEM SOCIAL INSTAGRAM -->
+            <img class="face" src="../img/facebook.png" alt=""> <!-- IMAGEM SOCIAL FACEBOOK -->
+        </div>  
+        </div>
+
+          <div class="traco">|</div> <!-- TRAÇO DE SEPARAÇÃO -->
+
+        <div class="card_mini">
+          <h3>Localização:</h3>
+          <p>Rua</p>
+          <span>Haddock Lobo, 595</span>
+          <br>  
+          <span>Ciqueira césar,</span>
+          <p>São Paulo - Sp</p>
+          <span>01414-001</span>
+        </div> 
+        
+      </div>   
+    </div>
+  </div>
+  <!-- INFORMAÇÕES ADD FIM -->
+
+  <!-- RODAPÉ INICIO -->
+  <div class="footer">
+    <div class="container">
+        <h4>
+          Copyright &copy; GrapeTech Todos os direitos reservados
+          <span class="version">2023</span>
+        </h4>
+        <span class="version">v1.0.0</span>
+    </div>
+  </div>
+    <!-- RODAPÉ FIM -->
+
+</body>
+</html>
+
+<script>
+  function enviar() {
+    alert("Enviado com sucesso!")
+  }
+</script>

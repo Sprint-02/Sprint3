@@ -1,0 +1,164 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('../img/Captura\ de\ tela\ 2023-04-12\ 224001.png');
+    background-size: cover;
+  }
+  
+  /* FUNDO E OPÇÃO DO CARD INICIO */
+  .card_formulario {
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(0, 0, 0);
+    box-shadow: black 0.1em 0.1em 0.2em
+  }
+  
+  .card_formulario h2 {
+    margin-bottom: 20px;
+    margin: 0;
+    font-size: 30px;
+    font-weight: 800; 
+    color: #7c0076;
+    text-shadow: #b3a5b2 0.1em 0.1em 0.2em;
+  }
+  /* FUNDO E OPÇÃO DO CARD FIM */
+  
+  /* CONTEUDO E OPÇÃO FORM INICIO */
+  .formulario {
+    padding: 1%;
+    margin-top: 10px;
+    width: 50%;
+    justify-content: center;
+  }
+  
+  .formulario input {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+  }
+
+  .formulario select {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+  }
+  
+  
+  .campo {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+  }
+  
+  .button_enviar {
+    border-radius: 60px;
+    border: 2px solid #7c0076;
+    background-color: #ffffff;
+    color: #7c0076;
+    text-align: center;
+    font-size: 16px;
+    width: 50%;
+    transition: all 0.4s;
+    cursor: pointer;
+    margin: 5px;
+    margin-bottom: 20px;
+    height: 35px;
+  }
+  
+  .button_enviar:hover {
+    border: 2px solid #ffffff;
+    background-color: #7c0076;
+    color: #e5e5e5;
+    transition: all 0.5s;
+    text-decoration: none;
+  }
+  /* CONTEUDO E OPÇÃO FORM FIM */
+
+  /* CONTEUDO E OPÇÃO ADD INICIO */
+  .container_cards{
+    margin: 2%;
+    justify-content: center;
+    display: flex;
+  }
+
+  .card_add {
+    height: auto;
+    width: 80%;
+    margin: auto;
+    padding: 1%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card_text{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:flex-start;
+    text-align: center;
+  }
+
+  .traco {
+    font-size: 100px;
+    font-weight: 100;
+    color: #7c00768a;
+    
+  }
+  
+  .card_mini .insta {
+    width: 16px;
+    height: 14px;
+  }
+
+  .card_mini .face {
+    width: 16px;
+    height: 14px;
+  }
+
+  .card_mini span {
+    color: #7c0076;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    align-items: center;
+    margin: 10px;
+  }
+
+  .card_mini p {
+    color: #333333;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+    margin: 2px;
+    align-items: center;
+  }
+  /* CONTEUDO E OPÇÃO ADD FIM */
+  
+  /* RODAPÉ (INCIO) */
+  .footer {
+    margin-top: 40px;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .footer h4 {
+    margin: 0;
+    text-align: center;
+  }
+  
+  .footer .container .version {
+    font-size: 15px;
+    font-weight: 800;
+  }
+  /* RODAPÉ (FIM) */    

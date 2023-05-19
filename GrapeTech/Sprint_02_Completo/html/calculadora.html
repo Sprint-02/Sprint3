@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GrapeTech | Simulador Financeiro</title>
+    <!-- CHAMANDO EXTERNAMENTE NA PASTA (CSS) -->
+    <link rel="stylesheet" href="../css/navBar.css" />
+    <link rel="stylesheet" href="../css/calculadora.css" />
+
+    <!-- COLOCANDO ICON -->
+    <link rel="icon" href="../img/logo.png">
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGAÇÃO INICIO -->
+  <div class="header">  <!-- CABEÇALHO -->
+    <div class="container">
+      <img src="../img/lkogo grapetech.png" alt=""> <!-- LOGO -->
+        <ul class="navbar">
+          <li>
+              <img class="header icone-home" src="../img/casa.png" alt=""> <!-- ICONE INICIO (CASA) -->
+              <a href="../index.html">Inicial</a>
+          </li>
+          <li class="paginaSelecionada">
+              <a href="./calculadora.html">Simulador</a>
+          </li>
+          <li>
+              <a href="./login.html">Login</a>
+          </li>
+          <li>
+              <a href="./cadastro.html">Cadastro</a>
+          </li>
+            <li>
+              <a href="./contato.html">Fale conosco</a>
+          </li>
+        </ul>
+    </div>
+  </div>
+  <!-- BARRA DE NAVEGAÇÃO FIM -->
+
+  <!-- CALCULADORA INICIO -->
+    <div class="container">
+        <div class="card_calculadora">
+            <h2>Simule aqui!</h2>
+                <div class="formulario">
+                    <h3>Insira os valores por safra</h3>
+                    <span>Valor por kg da uva:</span>
+                    <div class="campo">
+                        <input id="valor_kg_uva" placeholder=" Inserir valor por safra ">
+                    </div>
+
+                    <span>Kg por metro quadrado:</span>
+                    <div class="campo">
+                        <input id="kg_metro_uva" placeholder=" Inserir metro por kg ">
+                    </div>
+                        
+                    <span>Quantidade de metros quadrados plantados:</span>
+                    <div class="campo">
+                        <input id="metro_uva" placeholder=" Inserir quantidade de metros quadrados ">
+                    </div>
+                      
+                    <button class="botao" onclick="Simular()">Simular</button>
+                <div class="resultado" id="mensagem_simular"></div>
+            </div>
+        </div>
+    </div>    
+    <!-- CALCULADORA FIM -->
+    
+    <!-- CALCULAR HECTAR EM METRO INICIO -->
+    <div class="container">
+        <div class="card_calculadora">
+            <div class="formulario">
+                <span>Caso plante em hectar e não saiba transformar para metro quadrado:</span>
+                <div class="campo">
+                    <input id="hectar_metro" placeholder="Hectar para metro quadrado">
+                </div>
+
+                    <button onclick="Calcular()" class="button_calcular">Calcule aqui</button>
+                <div class="div_resultado" id="mensagem_hectar_metro"></div>
+            </div>
+        </div>
+    </div>
+    <!-- CALCULAR HECTAR EM METRO FIM -->
+
+      
+    <!-- RODAPÉ INICIO -->
+    <div class="footer">
+        <div class="container">
+            <h4>
+                Copyright &copy; GrapeTech Todos os direitos reservados
+                <span class="version">2023</span>
+            </h4>
+            <span class="version">v1.0.0</span>
+        </div>
+    </div>
+    <!-- RODAPÉ FIM -->
+    
+</body>
+
+<script>
+    function Simular() {
+
+        var pega_valor_uva = Number(valor_kg_uva.value)//pega o valor por kilo da uva
+
+        var pega_kg_metro_uva = Number(kg_metro_uva.value)//pega a quantidade de kilos por metro quadrado
+
+        var pega_metro_uva = Number(metro_uva.value)//pega a quantidade de metros quadrados
+
+        var calcula_kg_metro = pega_metro_uva * pega_kg_metro_uva//calcula a quantidade de kilos de uva por metro quadrado
+
+        var calcula_valor_uva = calcula_kg_metro * pega_valor_uva//calcula o valor total de uvas
+
+        var calcula_ganho_atual = calcula_valor_uva * 0.625 //aplica a porcentagem de perda de uvas
+
+        var ganhoAtualtotal = calcula_valor_uva - calcula_ganho_atual
+
+        var calcula_ganho_futuro = calcula_valor_uva * 0.98125 //95% da perda reduizida (95% de 37.5% = 0.35625) (0.37.5 - 0.35625 = 0.01875) (1 - 0.0125 = 0.98125)
+
+        var calcula_ganho_diferença = calcula_ganho_futuro - calcula_ganho_atual  //calcula a diferença do ganho atual, para o ganho futuro
+
+        var totalGanhosComNossoProjeto = calcula_valor_uva - calcula_ganho_futuro
+
+        var calcula_orçamento_ldr = ((pega_metro_uva / 10000) * 2) * 5.25//primeiro descobre quantos hectares tem, dps multiplica por 2 ldr, dps 5 reais, que é o valor do ldr atualmente e 25 centavos de um capacitor
+
+        var calcula_orçamento_dht11 = (pega_metro_uva / 78.5) * 14//calcula a quantidade de dht11 necessários (78.5 = área de um círculo com raio de 5m) vezes 14 reais, que é o valor atual do dht11
+
+        var calcula_orçamento_placa_mae = ((pega_metro_uva / 78.5) * 0.166666666667) * 50//a cada 6 dht11 (0.166666666667 * 6 = 1) ele retorna uma placa mãe e depois vezes 50  reais, que é o valor atual da placa mãe
+
+        var calcula_orçamento_fios = ((((pega_metro_uva / 78.5) * 3) + (((pega_metro_uva / 78.5) * 0.166666666667) * 2) + ((pega_metro_uva / 10000) * 3)) / 40) * 15//descobre a quantidade de fios para o dht11(3 fios para cada dht11), dps placa mãe(2 fios para 6 entradas), dps ldr(3 fios para cada ldr), depois divide por 40 fios que tem em uma caixinha, por fim, vezes 15 que é o valor de 40 fios no preço atual
+
+        var calcula_orçamento_total = calcula_orçamento_dht11 + calcula_orçamento_placa_mae + calcula_orçamento_ldr + calcula_orçamento_fios + 50//calcula o orçamento final (total dht11 + total placa mãe + 1 lm35 + fios + ldr que custa 50 reais, que é o valor atual)
+
+        if (calcula_orçamento_total <= 119.25) {
+            calcula_orçamento_total = 120
+        }
+        mensagem_simular.innerHTML = `Atualmente você deve ganhar aproximadamente <b>R$${calcula_ganho_atual.toFixed(2)}</b>, se implementar nosso sistema você pode ganhar até
+         <b>R$${calcula_ganho_diferença.toFixed(2)}</b> a mais por safra!<br>
+         O custo dos equipamentos <font color ="blue">(não inclui a taxa de serviço)</font color> que te passamos é de aproximadamente <b>R$${calcula_orçamento_total.toFixed(2)}</b><br>
+         Ao todo, o lucro total do seu investimento atual é <b>R$${ganhoAtualtotal.toFixed(2)}</b>, porem com o nosso projeto, diminuindo suas perdas, sera de: <b>R$${totalGanhosComNossoProjeto.toFixed(2)}</b>
+         
+         `
+
+    }
+
+    function Calcular() {
+        var pega_hectar_metro = Number(hectar_metro.value)//pega a quantidade de hectares
+        var calcula_hectar_metro = pega_hectar_metro * 10000//transforma hectares para metro
+        mensagem_hectar_metro.innerHTML = `Com ${pega_hectar_metro} hectares, você tem ${calcula_hectar_metro}m²`
+    }
+</script>

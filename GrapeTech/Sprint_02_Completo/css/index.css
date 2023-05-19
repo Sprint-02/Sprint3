@@ -1,0 +1,152 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('../img/Captura\ de\ tela\ 2023-04-12\ 224001.png');
+  background-size: cover;
+}
+
+:root {
+  --tamanho-header: 80px;
+  --tamanho-banner: calc(60vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho--footer: 2px
+}
+
+/* APRESENTAÇÃO DO SITE INICIO */
+.banner {
+  margin-left: 128px;
+  height: var(--tamanho-banner);
+  width: 80vw;
+  display: flex;
+}
+
+.banner .container_text_banner p {
+  font-size: 34px;
+  color: rgb(255, 255, 255);
+  width: 110%;
+  text-shadow: black 0.1em 0.1em 0.2em /* SOBREADO DA TEXT */
+}
+
+.banner img {
+  width: 800px; 
+  height: 500px;
+}
+
+.banner .container_text_banner span {
+  font-weight: 900;
+}
+
+/* BOTÃO INICIAL (CADASTRAR) iNICIO */
+.button_cadastrar {
+  display: inline-block;
+  border-radius: 60px;
+  background-color: #ffffff;
+  border: none;
+  color: #7c0076;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 0;
+  margin-bottom: 300px;
+  margin-right: 100px;
+  box-shadow: black 0.1em 0.1em 0.2em
+}
+
+.button_cadastrar:hover {
+  background-color: #7c0076;
+  color: #e5e5e5;
+  transition: all 0.5s; /* ANIMAÇÃO DO BOTÃO */
+  text-decoration: none;
+}
+
+.button_cadastrar .a {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: all 0.5s;
+  text-decoration: none;
+}
+
+.button_cadastrar .a:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -40px;
+}
+
+.button_cadastrar:hover .a {
+  padding-right: 25px;
+  text-decoration: none;
+  color: #e5e5e5;
+}
+
+.button_cadastrar:hover .a:after {
+  opacity: 1;
+  right: 0;
+}
+/* BOTÃO INICIAL (CADASTRAR) FIM */
+
+
+.banner .container p {
+  font-size: 36px;
+  color: rgb(255, 255, 255);
+  width: 280px;
+}
+
+.banner .container span {
+  font-weight: 800;
+}
+/* APRESENTAÇÃO DO SITE FIM */
+
+/* SOBRE NÓS INCIO */
+.banner2 {
+  display: flex;
+  margin: 25px;
+  margin-bottom: 50px;
+}
+
+.div_img img{
+  width: 100%;
+  height: 100%;
+}
+
+.container_text_banner p{
+  margin-right: 80px;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  width: 500px;
+  margin-bottom: 80px;
+  text-shadow: black 0.1em 0.1em 0.2em
+}
+
+.container_text_banner h1{
+  font-size: 40px;
+  color: rgb(255, 255, 255);
+  width: 280px;
+  font-weight: 800;
+  text-shadow: black 0.1em 0.1em 0.2em
+}
+/* SOBRE NÓS FIM */
+
+/* RODAPÉ INCIO */
+.footer {
+  height: var(--tamanho-footer);
+  width: 100%;
+  color: #fff;
+  text-align: center;
+}
+
+.footer h4 {
+  margin: 0;
+  text-align: center;
+}
+
+.footer .container .version {
+  font-size: 15px;
+  font-weight: 800;
+}
+/* RODAPÉ FIM */

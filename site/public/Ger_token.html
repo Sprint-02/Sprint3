@@ -4,36 +4,47 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerador de Token</title>
+    <link rel="stylesheet" href="./css/ger_token.css">
+    <link rel="stylesheet" href="./css/navBar.css">
 </head>
 
 <body>
-    
-    
-        <h1>Gerador de token GTECH </h1>
-
-<br><br>
-
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">Gtech</h1>
+            <ul class="navbar">
+                <li>
+                    <a href="index.html">Inicial</a>
+                </li>
+                <li>
+                    <a href="./Choice_Login.html">Simulador</a>
+                </li>
+                <li>|</li>
+                <li class="agora">
+                    <a href="login.html">Login</a>
+                </li>
+                <li>
+                    <a href="cadastro.html">Cadastro</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+   
+    <div class="token_formulario">
+<div class="container_geral">
+    <h1>Gerador de token GTECH </h1>
         <h3>Insira seu CPF</h3>
-        <input id="demo1" type="text" placeholder="SOMENTE NUMEROS">
-
-<br><br>
+        <input id="demo1" type="text" placeholder="Somente números">
 
         <h3>Para maior segurança!</h3>
 
 
-
-<br>
-
-
-
 <div style="color: #000000; text-transform: uppercase;" id="demo3"></div>
+<button class="botao" onclick="cadastrarToken()">Cadastrar Token</button>
+<button class="botao" onclick="converter()">Converter</button>
 
-<br><br>
-<button onclick="cadastrarToken()">Cadastrar Token</button>
-<button onclick="converter()">Converter</button>
-
-
-
+</div>
+</div>
 
 
 <script>

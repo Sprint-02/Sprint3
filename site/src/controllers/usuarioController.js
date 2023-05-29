@@ -127,10 +127,44 @@ function cadastrarToken(req, res) {
     }
 }
 
+
+function enviar(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+   
+    var email = req.body.emailServer;
+    var Desc = req.body.DescServer;
+   
+    // Faça as validações dos valores
+    if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (Desc == undefined) {
+        res.status(400).send("Sua Descrição está undefined!");
+    }  else {
+        
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.enviar( email, Desc)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o contato! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     testar,
-    cadastrarToken
+    cadastrarToken,
+    enviar
 }

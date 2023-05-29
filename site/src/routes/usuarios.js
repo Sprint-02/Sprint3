@@ -26,4 +26,7 @@ router.post("/cadastrarToken", function (req, res) {
     usuarioController.cadastrarToken(req, res);
 })
 
+router.post("/enviar", function (req, res) {
+    usuarioController.enviar(req, res);
+})
 module.exports = router;

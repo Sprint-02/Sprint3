@@ -44,9 +44,21 @@ function cadastrarToken(Token, cpf) {
     return database.executar(instrucao);
 }
 
+function enviar( email, Desc ) {
+   
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+        INSERT INTO Denuncias (email, descricao ) VALUES ('${email}', '${Desc}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    cadastrarToken
+    cadastrarToken,
+    enviar
 };

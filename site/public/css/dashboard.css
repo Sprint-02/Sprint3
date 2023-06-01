@@ -207,5 +207,9 @@ align-items: center;
     font-size: 15px;
     font-weight: 800;
   }
-
+  
+  #alerta {
+    position: absolute;
+    right: 0px;
+}
   /* RODAPÉ (FIM) */

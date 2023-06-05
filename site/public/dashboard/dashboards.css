@@ -333,14 +333,14 @@ canvas {
 }
 
 .header-left {
-  position: fixed;
+  
   top: 0;
   left: 0;
-  z-index: 999;
+  
   height: 100vh;
   width: 20%;
-  display: flex;
-  flex-direction: column;
+  
+  
   justify-content: space-evenly;
   align-items: center;
   border-right: 3px solid #e68200;

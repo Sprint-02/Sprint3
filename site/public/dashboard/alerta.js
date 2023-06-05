@@ -59,7 +59,7 @@ function alertar(resposta, idAquario) {
 if(temp > limites.ideal || temp < limites.ideal){
     Swal.fire({
         icon: 'warning',
-        title: 'UMIDADE FORA DOS PADRÕES IDEAIS',
+        title: 'Temperatura FORA DOS PADRÕES IDEAIS',
         text: 'VÁ PARA A ESTUFA 1 ARRUMAR OS PADRÕES',
     });
 
@@ -68,81 +68,6 @@ if(temp > limites.ideal || temp < limites.ideal){
 
 
 
-function alertaro(resposta) {
-    var temp = resposta[0].temperatura;
-    var umi = resposta[0].umidade;
-
-    var limites = {
-        muito_quente: 26,
-        quente: 25,
-        ideal: 20,
-        frio: 18,
-        muito_frio: 19
-    };
-
-    var limitesU = {
-        muito_umido: 95,
-        umido: 93,
-        ideal: 90,
-        seco: 83,
-        muito_seco: 80
-    };
-    
-
-
-    if(umi > limitesU.ideal || umi < limitesU.ideal){
-        Swal.fire({
-            icon: 'warning',
-            title: 'UMIDADE FORA DOS PADRÕES IDEAIS',
-            text: 'VÁ PARA A ESTUFA 1 ARRUMAR OS PADRÕES',
-        });
-    
-    }else
-if(temp > limites.ideal || temp < limites.ideal){
-    Swal.fire({
-        icon: 'warning',
-        title: 'UMIDADE FORA DOS PADRÕES IDEAIS',
-        text: 'VÁ PARA A ESTUFA 1 ARRUMAR OS PADRÕES',
-    });
-
-}  
-
-
-
-
-    var card;
-
-    if (idAquario == 1) {
-        temp_aquario_1.innerHTML = temp + "°C";
-        card = card_1
-    } else if (idAquario == 2) {
-        temp_aquario_2.innerHTML = temp + "°C";
-        card = card_2
-    } else if (idAquario == 3) {
-        temp_aquario_3.innerHTML = temp + "°C";
-        card = card_3
-    } else if (idAquario == 4) {
-        temp_aquario_4.innerHTML = temp + "°C";
-        card = card_4
-    }
-
-    if (idAquario == 1) {
-        temp_aquario_1.innerHTML = umi + " de umidade";
-        card = card_1
-    } else if (idAquario == 2) {
-        temp_aquario_2.innerHTML = umi + " de umidade";
-        card = card_2
-    } else if (idAquario == 3) {
-        temp_aquario_3.innerHTML = umi + " de umidade";
-        card = card_3
-    } else if (idAquario == 4) {
-        temp_aquario_4.innerHTML = umi + " de umidade";
-        card = card_4
-    }
-
-    card.className = classe_temperatura;
-    card.className = classe_umidade;
-}
 
 function exibirAlerta(temp,umi, idAquario, grauDeAviso, grauDeAvisoCor) {
     var indice = alertas.findIndex(item => item.idAquario == idAquario);

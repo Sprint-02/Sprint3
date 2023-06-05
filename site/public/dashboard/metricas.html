@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+   
+
+    <!-- <link rel="stylesheet" href="navbarDash.css"> -->
+    <link rel="stylesheet" href="./metricas.css" />
+    <script src="../js/funcoes.js"></script>
+    <script src="./alerta.js"></script>
+    <style>
+        /* canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        } */
+    </style>
+</head>
+
+<body>
+
+    <div class="navBar">
+        <li>
+            <ul> GrapeTech </ul>
+        </li>
+
+            <button class="btnDash" onclick="btnGrafico()">
+                Graficos
+            </button>
+           
+            <button class="btn">
+                <a href="./login.html"> Sair </a>
+            </button>
+            
+    </div>
+    
+
+
+    <div class="dash">
+
+        </div>
+        <p>Temperatura</p>
+        <div class="regua">
+            <div class="item-regua perigo-frio">
+                <h4>Perigo</h4>
+                <h2>15°C</h2>
+            </div>
+            <div class="item-regua alerta-frio">
+                <h4>Alerta</h4>
+                <h2> 16°C - 19°C </h2>
+            </div>
+            <div class="item-regua ideal">
+                <h4>Ideal</h4>
+                <h2>18°C - 21°C </h2>
+            </div>
+            <div class="item-regua alerta-quente">
+                <h4>Alerta</h4>
+                <h2>22°C - 26°C</h2>
+            </div>
+            <div class="item-regua perigo-quente">
+                <h4>Perigo</h4>
+                <h2>+27°C</h2>
+            </div>
+        </div>
+
+<p>Umidade</p>
+
+        <div class="regua">
+            <div class="item-regua perigo-frio">
+                <h4>Perigo</h4>
+                <h2>80</h2>
+            </div>
+            <div class="item-regua alerta-frio">
+                <h4>Alerta</h4>
+                <h2>81 - 85</h2>
+            </div>
+            <div class="item-regua ideal">
+                <h4>Ideal</h4>
+                <h2> 86 - 90</h2>
+            </div>
+            <div class="item-regua alerta-quente">
+                <h4>Alerta</h4>
+                <h2>91 - 95</h2>
+            </div>
+            <div class="item-regua perigo-quente">
+                <h4>Perigo</h4>
+                <h2>96+</h2>
+            </div>
+        </div>
+      
+</body>
+
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+
+<script>
+
+
+
+function btnGrafico() {
+        window.location.href = 'dashboard.html';
+    }
+
+
+
+    window.onload = obterDadosGraficos();
+
+let proximaAtualizacao;
+
+    function obterDadosGraficos() {
+        obterDadosGrafico(1)
+        obterDadosGrafico(2)
+        obterDadosGrafico(3)
+        obterDadosGrafico(4)
+    }
+
+
+
+    function obterDadosGrafico(idAquario) {
+
+
+
+
+fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+
+            
+            
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+
+
+</script>

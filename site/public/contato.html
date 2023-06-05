@@ -57,7 +57,7 @@
           </div>
 
           <span>Assunto:</span>
-            <select name="Assunto" id="slcAssunto"> <!-- SELECT DE OPÇÕES -->
+            <select  id="slcAssunto"> <!-- SELECT DE OPÇÕES -->
                   <option value="" disabled selected>Selecione o Assunto</option>
                   <option value="Arduino">Arduino</option>
                   <option value="Sensor">Sensor</option>
@@ -145,8 +145,10 @@
       
         var emailVar = email_input.value;
         var DescVar = senha_input.value;
+
+        var assuntoo = slcAssunto.value
     
-        if ( emailVar == "" || DescVar == "") {
+        if ( emailVar == "" || DescVar == "" || assuntoo == "") {
             cardErro.style.display = "block"
             alert( "(Mensagem de erro para todos os campos em branco)");
 
@@ -166,6 +168,7 @@
                
                 emailServer: emailVar,
                 DescServer: DescVar,
+                assuntoServer: assuntoo,
 
             })
         }).then(function (resposta) {

@@ -133,16 +133,18 @@ function enviar(req, res) {
    
     var email = req.body.emailServer;
     var Desc = req.body.DescServer;
-   
+   var assunto = req.body.assuntoServer;
     // Faça as validações dos valores
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (Desc == undefined) {
         res.status(400).send("Sua Descrição está undefined!");
+    }  else if (assunto == undefined) {
+        res.status(400).send("Seu assunto está undefined!");
     }  else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.enviar( email, Desc)
+        usuarioModel.enviar( email, Desc, assunto)
             .then(
                 function (resultado) {
                     res.json(resultado);

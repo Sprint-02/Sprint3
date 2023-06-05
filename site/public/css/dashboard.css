@@ -16,6 +16,13 @@ display: flex;
 flex-direction: row;
 }
 
+
+.dash{
+background-color: #3b1067;
+
+}
+
+
 .header-left{
   height: 120vh;
   width: 22%;
@@ -105,7 +112,7 @@ flex-direction: row;
   margin: auto;
   padding: 1%;
   border-radius: 10px;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -159,7 +166,7 @@ flex-direction: row;
 
 .sensores{
   display: flex;
-  background-color: #211e24;
+  background-color: #3b1067;
   width: 100%;
   flex-direction: column;
   justify-content: center;  
@@ -210,6 +217,7 @@ align-items: center;
   
   #alerta {
     position: absolute;
-    right: 0px;
+    
 }
+
   /* RODAPÉ (FIM) */

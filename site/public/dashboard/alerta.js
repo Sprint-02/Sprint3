@@ -24,50 +24,91 @@ function obterdados(idAquario) {
 
 function alertar(resposta, idAquario) {
     var temp = resposta[0].temperatura;
-
+    var umi = resposta[0].umidade;
     console.log(idAquario === resposta[0].fk_aquario)
     
-    var grauDeAviso ='';
+    
 
 
     var limites = {
-        muito_quente: 23,
-        quente: 22,
+        muito_quente: 26,
+        quente: 25,
         ideal: 20,
-        frio: 10,
-        muito_frio: 5
+        frio: 18,
+        muito_frio: 19
     };
 
-    var classe_temperatura = 'cor-alerta';
+    var limitesU = {
+        muito_umido: 95,
+        umido: 93,
+        ideal: 90,
+        seco: 83,
+        muito_seco: 80
+    };
+    
 
-    if (temp >= limites.muito_quente) {
-        classe_temperatura = 'cor-alerta perigo-quente';
-        grauDeAviso = 'perigo quente'
-        grauDeAvisoCor = 'cor-alerta perigo-quente'
-        exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor)
-    }
-    else if (temp < limites.muito_quente && temp >= limites.quente) {
-        classe_temperatura = 'cor-alerta alerta-quente';
-        grauDeAviso = 'alerta quente'
-        grauDeAvisoCor = 'cor-alerta alerta-quente'
-        exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor)
-    }
-    else if (temp < limites.quente && temp > limites.frio) {
-        classe_temperatura = 'cor-alerta ideal';
-        removerAlerta(idAquario);
-    }
-    else if (temp <= limites.frio && temp > limites.muito_frio) {
-        classe_temperatura = 'cor-alerta alerta-frio';
-        grauDeAviso = 'alerta frio'
-        grauDeAvisoCor = 'cor-alerta alerta-frio'
-        exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor)
-    }
-    else if (temp <= limites.muito_frio) {
-        classe_temperatura = 'cor-alerta perigo-frio';
-        grauDeAviso = 'perigo frio'
-        grauDeAvisoCor = 'cor-alerta perigo-frio'
-        exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor)
-    }
+
+    if(umi > limitesU.ideal || umi < limitesU.ideal){
+        Swal.fire({
+            icon: 'warning',
+            title: 'UMIDADE FORA DOS PADRÕES IDEAIS',
+            text: 'VÁ PARA A ESTUFA 1 ARRUMAR OS PADRÕES',
+        });
+    
+    }else
+if(temp > limites.ideal || temp < limites.ideal){
+    Swal.fire({
+        icon: 'warning',
+        title: 'UMIDADE FORA DOS PADRÕES IDEAIS',
+        text: 'VÁ PARA A ESTUFA 1 ARRUMAR OS PADRÕES',
+    });
+
+}  
+}
+
+
+
+function alertaro(resposta) {
+    var temp = resposta[0].temperatura;
+    var umi = resposta[0].umidade;
+
+    var limites = {
+        muito_quente: 26,
+        quente: 25,
+        ideal: 20,
+        frio: 18,
+        muito_frio: 19
+    };
+
+    var limitesU = {
+        muito_umido: 95,
+        umido: 93,
+        ideal: 90,
+        seco: 83,
+        muito_seco: 80
+    };
+    
+
+
+    if(umi > limitesU.ideal || umi < limitesU.ideal){
+        Swal.fire({
+            icon: 'warning',
+            title: 'UMIDADE FORA DOS PADRÕES IDEAIS',
+            text: 'VÁ PARA A ESTUFA 1 ARRUMAR OS PADRÕES',
+        });
+    
+    }else
+if(temp > limites.ideal || temp < limites.ideal){
+    Swal.fire({
+        icon: 'warning',
+        title: 'UMIDADE FORA DOS PADRÕES IDEAIS',
+        text: 'VÁ PARA A ESTUFA 1 ARRUMAR OS PADRÕES',
+    });
+
+}  
+
+
+
 
     var card;
 
@@ -85,27 +126,46 @@ function alertar(resposta, idAquario) {
         card = card_4
     }
 
+    if (idAquario == 1) {
+        temp_aquario_1.innerHTML = umi + " de umidade";
+        card = card_1
+    } else if (idAquario == 2) {
+        temp_aquario_2.innerHTML = umi + " de umidade";
+        card = card_2
+    } else if (idAquario == 3) {
+        temp_aquario_3.innerHTML = umi + " de umidade";
+        card = card_3
+    } else if (idAquario == 4) {
+        temp_aquario_4.innerHTML = umi + " de umidade";
+        card = card_4
+    }
+
     card.className = classe_temperatura;
+    card.className = classe_umidade;
 }
 
-function exibirAlerta(temp, idAquario, grauDeAviso, grauDeAvisoCor) {
+function exibirAlerta(temp,umi, idAquario, grauDeAviso, grauDeAvisoCor) {
     var indice = alertas.findIndex(item => item.idAquario == idAquario);
 
     if (indice >= 0) {
-        alertas[indice] = { idAquario, temp, grauDeAviso, grauDeAvisoCor }
+        alertas[indice] = { idAquario, temp, umi, grauDeAviso, grauDeAvisoCor }
     } else {
-        alertas.push({ idAquario, temp, grauDeAviso, grauDeAvisoCor });
+        alertas.push({ idAquario, temp,umi, grauDeAviso, grauDeAvisoCor });
     }
 
     exibirCards();
+    
     
 // Dentro da div com classe grauDeAvisoCor há um caractere "invisível", 
 // que pode ser inserido clicando com o seu teclado em alt+255 ou pelo código adicionado acima.
 }
 
+
+
 function removerAlerta(idAquario) {
     alertas = alertas.filter(item => item.idAquario != idAquario);
     exibirCards();
+
 }
  
 function exibirCards() {
@@ -114,16 +174,31 @@ function exibirCards() {
     for (var i = 0; i < alertas.length; i++) {
         var mensagem = alertas[i];
         alerta.innerHTML += transformarEmDiv(mensagem);
+  
     }
 }
 
-function transformarEmDiv({ idAquario, temp, grauDeAviso, grauDeAvisoCor }) {
-    return `<div class="mensagem-alarme">
-    <div class="informacao">
-    <div class="${grauDeAvisoCor}">&#12644;</div> 
-     <h3>Aquário ${idAquario} está em estado de ${grauDeAviso}!</h3>
-    <small>Temperatura ${temp}.</small>   
-    </div>
-    <div class="alarme-sino"></div>
-    </div>`;
+ 
+function exibirCardsU() {
+    alerta.innerHTML = '';
+
+    for (var i = 0; i < alertas.length; i++) {
+        var mensagem = alertas[i];
+        alerta.innerHTML += transformarEmDivU(mensagem);
+  
+    }
 }
+
+
+// function transformarEmDiv({ idAquario, temp, umi, grauDeAviso, grauDeAvisoCor }) {
+//    if(){ }
+
+//   if(){  Swal.fire({
+        // icon: 'warning',
+        // title: 'UMIDADE FORA DOS PADRÕES IDEAIS',
+        // text: 'VÁ PARA A ESTUFA 1 ARRUMAR OS PADRÕES',
+    // });}
+// }
+
+
+
